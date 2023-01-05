@@ -1,42 +1,62 @@
 <h1 mat-dialog-title>Add Product</h1>
 <div mat-dialog-content>
     <form [formGroup]="productForm">
-        <mat-form-field appearance="fill">
-            <mat-label>Name</mat-label>
-            <input formControlName="productName" matInput placeholder="Placeholder">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Category</mat-label>
-            <mat-select formControlName="category" placeholder="Category">
-                <mat-option value="">Cat1</mat-option>"
-                <mat-option value="">Cat2</mat-option>"
-                <mat-option value="">Cat3</mat-option>"
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Choose a date</mat-label>
-            <input formControlName="date" matInput [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <label>
-            <h1>Product freshness</h1>
-        </label>
-        <mat-radio-group formControlName="freshness" class="example-radio-group">
-            <mat-radio-button class="example-radio-button" *ngFor="let fresh of freshnessList" [value]="fresh">
-                {{fresh}}
-            </mat-radio-button>
-        </mat-radio-group>
-        <mat-form-field appearance="fill">
-            <mat-label>Price</mat-label>
-            <input formControlName="price" matInput type="number" placeholder="Placeholder">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Comment</mat-label>
-            <textarea formControlName="comment" matInput></textarea>
-        </mat-form-field>
+        <mat-grid-list cols="2">
+
+
+            <!-- Left side -->
+            <mat-grid-tile>
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input formControlName="productName" matInput placeholder="Placeholder">
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input formControlName="date" matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Category</mat-label>
+                    <mat-select formControlName="category" placeholder="Category">
+                        <mat-option value="">Cat1</mat-option>"
+                        <mat-option value="">Cat2</mat-option>"
+                        <mat-option value="">Cat3</mat-option>"
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Price</mat-label>
+                    <input formControlName="price" matInput type="number" placeholder="Placeholder">
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+            <!-- Right Side -->
+            <mat-grid-tile>
+                <label>
+                    <h1>Product freshness</h1>
+                </label>
+                <mat-radio-group formControlName="freshness" class="example-radio-group">
+                    <mat-radio-button class="example-radio-button" *ngFor="let fresh of freshnessList" [value]="fresh">
+                        {{fresh}}
+                    </mat-radio-button>
+                </mat-radio-group>
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose a date</mat-label>
+                    <input formControlName="date" matInput [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Comment</mat-label>
+                    <textarea formControlName="comment" matInput></textarea>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
     </form>
+      
 </div>
 <div mat-dialog-action [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
