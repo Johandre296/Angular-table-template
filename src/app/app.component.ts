@@ -13,7 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class AppComponent implements OnInit {
   title = 'tableTemplate';
-  testObj = {'id':1,'name':'test'};
+  testObj = {'id':1,'name':'testssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'};
   testObj2 = {'id':2,'name':'test2'};
   testObj3 = {'id':3,'name':'test3'};
   testObj4 = {'id':4,'name':'test4'};

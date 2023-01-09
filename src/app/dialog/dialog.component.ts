@@ -27,6 +27,9 @@ export class DialogComponent implements OnInit {
       date:['',Validators.required]
     })
 
+    console.log('ActionBtn Status:' + this.actionBtn);
+    
+
     if (this.editData)
     {
       this.actionBtn = "Update";
