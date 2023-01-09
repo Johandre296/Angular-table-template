@@ -21,7 +21,8 @@ export class AppComponent implements OnInit {
   testObj6 = {'id':6,'name':'test6'};
   testList = [this.testObj,this.testObj2,this.testObj3,this.testObj4,this.testObj5,this.testObj6];
 
-  displayedColumns: string[] = ['id', 'name'];
+  // displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['id', 'name','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -42,6 +43,27 @@ getAllProducts(){
   this.dataSource = new MatTableDataSource(this.testList);
   this.dataSource.sort = this.sort;
   console.log(this.dataSource);
+}
+
+editProduct(row : any){
+  this.dialog.open(DialogComponent,{
+    data:row
+  }).afterClosed().subscribe(val =>{
+    if(val === 'update'){
+      this.getAllProducts();
+    }
+  })
+}
+
+deleteProduct(id:number){
+  // this.api.delete(id).subscribe({
+  //   next:(res)=>{
+  //     alert("deleted")
+  //   },
+  //   error:()=>{
+  //     alert("error while deleting")
+  //   }
+  // })
 }
 
 applyFilter(event: Event) {
