@@ -20,18 +20,26 @@
     margin:0 auto;
   }
 
-  .example-container {
-    /* width: 90%; */
-    /* height: 200px; */
-    /* margin: 12px; */
-    /* border: 1px solid #555; */
-  }
+  /* .example-container {
+    width: 90%; 
+    height: 200px;
+    margin: 12px; 
+    border: 1px solid #555;
+  }*/
   
   .edit-drawer{
     width: 50%;
     flex-direction: column;
     align-items: flex-start;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    box-shadow: -50px 10px 200px 20px lightgrey;
   }
+
+    .edit-drawer-footer {
+      position: sticky;
+      top: 90%;
+    }
   
   mat-drawer-content {
     /* height: 200px; */

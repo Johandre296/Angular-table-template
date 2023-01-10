@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
-// import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +13,9 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class AppComponent implements OnInit {
   title = 'tableTemplate';
+  freshnessList = ['Brand New', 'Second Hand', 'Old'];
+  productForm!: FormGroup;
+  actionBtn : string = "Save";
   testObj = {'id':1,'name':'testssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'};
   testObj2 = {'id':2,'name':'test2'};
   testObj3 = {'id':3,'name':'test3'};
@@ -28,9 +31,18 @@ export class AppComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-constructor(private dialog: MatDialog) {}
+constructor(private dialog: MatDialog,private formBuilder:FormBuilder) {}
 
 ngOnInit(): void {
+  this.productForm = this.formBuilder.group({
+    productName:['',Validators.required],
+    category:['',Validators.required],
+    freshness:['',Validators.required],
+    price:['',Validators.required],
+    comment:['',Validators.required],
+    date:['',Validators.required]
+  })
+
   this.getAllProducts();
 }
 

@@ -17,22 +17,54 @@
   <!-- <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value"> -->
   <mat-drawer-container  [hasBackdrop]="false">
     <mat-drawer mode="over" #drawer position="end" class="edit-drawer">
-      <div class="row p-3 m-1">
-        <div class="col-5">
-          1111111
+      <form [formGroup]="productForm">
+        <div class="row pl-3 pr-3 pt-3 m-1">
+          <div class="col-5">
+            <mat-form-field appearance="fill">
+              <mat-label>Name</mat-label>
+              <input formControlName="productName" matInput placeholder="Placeholder">
+            </mat-form-field>
+          </div>
+          <div class="col-5">
+            <mat-form-field appearance="fill">
+              <mat-label>Category</mat-label>
+              <mat-select formControlName="category" placeholder="Category">
+                <mat-option value="">Cat1</mat-option>"
+                <mat-option value="">Cat2</mat-option>"
+                <mat-option value="">Cat3</mat-option>"
+              </mat-select>
+            </mat-form-field>
+          </div>
         </div>
-        <div class="col-5">
-          555555555
+        <div class="row pl-3 pr-3 pt-3 m-1">
+          <div class="col-5">
+            <mat-form-field appearance="fill">
+              <mat-label>Price</mat-label>
+              <input formControlName="price" matInput type="number" placeholder="Placeholder">
+            </mat-form-field>
+          </div>
+          <div class="col-5">
+            <label>Product freshness</label>
+            <mat-radio-group formControlName="freshness" class="example-radio-group">
+              <mat-radio-button class="example-radio-button" *ngFor="let fresh of freshnessList" [value]="fresh">
+                {{fresh}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
         </div>
-      </div>
-      <div class="row p-3 m-1">
-        <div class="col-5">
-          2222222
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>Comment</mat-label>
+          <textarea formControlName="comment" matInput></textarea>
+        </mat-form-field> -->
+        <div class="edit-drawer-footer m-1">
+          <hr>
+          <div mat-dialog-action [align]="'end'">
+            <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+            <button style="margin-left: 1em;" mat-raised-button color="primary">Update</button>
+          </div>
         </div>
-        <div class="col-5">
-          6666666
-        </div>
-      </div>
+      </form>
+    
     </mat-drawer>
 
     <!-- Main content goes here -->
