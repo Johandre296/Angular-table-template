@@ -4,15 +4,14 @@
     </button>
     <span>Table Template using Material UI</span>
     <span class="example-spacer"></span>
-    <button mat-raised-button color="warn" (click)="openDialog()">Add</button>
   </mat-toolbar>
 
   <div class="container">
-    <button mat-raised-button (click)="drawer.toggle()">Toggle drawer</button>
     <mat-form-field>
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. test2" #input>
     </mat-form-field>
+    <button style="margin-left: 1em;" mat-raised-button color="primary" (click)="addProduct()" (click)="drawer.toggle()"><i class="bi bi-plus"></i>  Add</button>
 
   <!-- <mat-drawer-container class="example-container" [hasBackdrop]="hasBackdrop.value"> -->
   <mat-drawer-container  [hasBackdrop]="false">
@@ -27,12 +26,8 @@
           </div>
           <div class="col-5">
             <mat-form-field appearance="fill">
-              <mat-label>Category</mat-label>
-              <mat-select formControlName="category" placeholder="Category">
-                <mat-option value="">Cat1</mat-option>"
-                <mat-option value="">Cat2</mat-option>"
-                <mat-option value="">Cat3</mat-option>"
-              </mat-select>
+              <mat-label>Id</mat-label>
+              <input formControlName="id" matInput placeholder="Placeholder">
             </mat-form-field>
           </div>
         </div>
@@ -43,24 +38,13 @@
               <input formControlName="price" matInput type="number" placeholder="Placeholder">
             </mat-form-field>
           </div>
-          <div class="col-5">
-            <label>Product freshness</label>
-            <mat-radio-group formControlName="freshness" class="example-radio-group">
-              <mat-radio-button class="example-radio-button" *ngFor="let fresh of freshnessList" [value]="fresh">
-                {{fresh}}
-              </mat-radio-button>
-            </mat-radio-group>
-          </div>
         </div>
-        <!-- <mat-form-field appearance="fill">
-          <mat-label>Comment</mat-label>
-          <textarea formControlName="comment" matInput></textarea>
-        </mat-form-field> -->
         <div class="edit-drawer-footer m-1">
           <hr>
           <div mat-dialog-action [align]="'end'">
-            <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-            <button style="margin-left: 1em;" mat-raised-button color="primary">Update</button>
+            <!-- <button mat-raised-button color="warn" mat-dialog-close>Close</button> -->
+            <button mat-raised-button color="warn" (click)="drawer.toggle()" (click)="resetDrawer()">Close</button>
+            <button style="margin-left: 1em;" mat-raised-button color="primary">{{actionBtn}}</button>
           </div>
         </div>
       </form>
@@ -75,7 +59,7 @@
           
               <!-- ID Column -->
               <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
                 <td mat-cell *matCellDef="let row"> {{row.id}} </td>
               </ng-container>
           
@@ -89,7 +73,8 @@
               <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
                 <td mat-cell *matCellDef="let row">
-                <button mat-icon-button color="primary" (click)="editProduct(row)">
+                <!-- <button mat-icon-button color="primary" (click)="editProduct(row)" > -->
+                <button mat-icon-button color="primary" (click)="drawer.toggle(row)" (click)="editProduct(row)">
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button mat-icon-button color="warn" (click)="deleteProduct(row.id)">
@@ -100,24 +85,13 @@
           
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
               <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          
               <!-- Row shown when there is no matching data. -->
               <tr class="mat-row" *matNoDataRow>
                 <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
               </tr>
             </table>
-          
             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-          
       </div>
     </mat-drawer-content>
   </mat-drawer-container>
-</div>
-
-
-<div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-  <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
-</div>
-
-  
+</div>  
